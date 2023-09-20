@@ -1,0 +1,143 @@
+using System;
+
+namespace _08._Fuel_Tank___Part_2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Напишете програма, която да изчислява, колко ще струва на един шофьор да напълни резервоара
+            // на автомобила си, като знаете – какъв тип гориво зарежда, каква е цената за литър гориво и
+            // дали разполага с карта за отстъпки. Цените на горивата са както следва: 
+
+            // Бензин – 2.22 лева за един литър,
+            // Дизел – 2.33 лева за един литър
+            // Газ – 0.93 лева за литър
+
+            // Ако водача има карта за отстъпки,  той се възползва от следните намаления за литър гориво:
+            // 18 ст.за литър бензин, 12 ст.за литър дизел и 8 ст.за литър газ.
+            // Ако шофьора е заредил между 20 и 25 литра включително, той получава 8 процента отстъпка от
+            // крайната цена, при повече от 25 литра гориво, той получава 10 процента отстъпка от крайната цена.
+
+            //1. Четем от конзолата 3 реда
+            //   Типа на горивото – string "Gas", "Gasoline" или "Diesel"
+            //   Количество гориво – double [1.00 … 50.00]
+            //   Притежание на клубна карта – string : "Yes" или "No"
+            string fuelType = Console.ReadLine();
+            double fuelLiters = double.Parse(Console.ReadLine());
+            string clubCard = Console.ReadLine();
+
+            bool haveCard =  clubCard == "Yes";
+
+            if(haveCard)
+            {
+                if(fuelType=="Gas"&&fuelLiters>=20.0&&fuelLiters<=25.0)
+                {
+                    double fuelPrice = (0.93 - 0.08) * fuelLiters;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.08);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType=="Gas"&&fuelLiters>25.0)
+                {
+                    double fuelPrice = (0.93 - 0.08) * fuelLiters;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.10);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType == "Gas" && fuelLiters < 20.0)
+                {
+                    double fuelPrice = (0.93-0.08) * fuelLiters;
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType == "Gasoline"&&fuelLiters>=20.0&&fuelLiters<=25.0)
+                {
+                    double fuelPrice = (2.22 - 0.18) * fuelLiters;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.08);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType == "Gasoline" && fuelLiters>25.0)
+                {
+                    double fuelPrice = (2.22 - 0.18) * fuelLiters;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.10);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if (fuelType == "Gasoline" && fuelLiters < 20.0)
+                {
+                    double fuelPrice = (2.22-0.18) * fuelLiters;
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType=="Diesel"&&fuelLiters>=20.0&&fuelLiters<=25.0)
+                {
+                    double fuelPrice = (2.33 - 0.12) * fuelLiters;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.08);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType=="Diesel"&&fuelLiters>25.0)
+                {
+                    double fuelPrice = (2.33 - 0.12) * fuelLiters;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.10);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType == "Diesel" && fuelLiters < 20.0)
+                    {
+                        double fuelPrice = (2.33-0.12) * fuelLiters;
+                        Console.WriteLine($"{fuelPrice:F2} lv.");
+                    }
+            }
+            else
+            {
+                if(fuelType == "Gas" && fuelLiters >= 20.0 && fuelLiters <= 25.0)
+                {
+                    double fuelPrice = 0.93 * fuelLiters;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.08);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType == "Gas" && fuelLiters > 25.0)
+                {
+                    double fuelPrice = 0.93 * fuelLiters;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.10);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType=="Gas"&&fuelLiters<20.0)
+                {
+                    double fuelPrice = 0.93 * fuelLiters;
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType=="Gasoline" && fuelLiters >= 20.0 && fuelLiters <= 25.0)
+                {   
+
+                    double fuelPrice = fuelLiters * 2.22;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.08);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType == "Gasoline" && fuelLiters >25.0)
+                {
+                    double fuelPrice = fuelLiters * 2.22;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.10);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if (fuelType == "Gasoline" && fuelLiters < 20.0)
+                {
+                    double fuelPrice = 2.22 * fuelLiters;
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if (fuelType == "Diesel" && fuelLiters >= 20.0 && fuelLiters <= 25.0)
+                {
+                    double fuelPrice = fuelLiters * 2.33;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.08);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if(fuelType=="Diesel"&&fuelLiters>25.0)
+                {
+                    double fuelPrice = fuelLiters * 2.33;
+                    fuelPrice = fuelPrice - (fuelPrice * 0.10);
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+                else if (fuelType == "Diesel" && fuelLiters < 20.0)
+                {
+                    double fuelPrice = 2.33 * fuelLiters;
+                    Console.WriteLine($"{fuelPrice:F2} lv.");
+                }
+            }
+        }
+    }
+}

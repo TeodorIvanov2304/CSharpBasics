@@ -1,0 +1,37 @@
+using System;
+
+namespace ConditionalStatementsLab
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Да се напише програма, която чете цяло число,
+            // въведено от потребителя и проверява дали е под 100,
+            // между 100 и 200 или над 200. Ако числото е:
+            // * Под 100 отпечатайте "Less than 100"
+            // * Между 100 и 200 отпечатайте "Between 100 and 200"
+            // * Над 200 отпечатайте "Greather than 200"
+
+            // 1. Четем числото тип int от конзолата 
+
+            int number = int.Parse(Console.ReadLine());
+
+            // 2. Проверяваме, дали числото е под 100 и изпечатваме на конзолата
+            if (number < 100)
+            {
+                Console.WriteLine("Less than 100");
+            }
+            // 3. Проверяваме, дали числото е межджу 100 и 200 и изпечатваме на конзолата
+            else if (number >= 100 && number <= 200)
+            {
+                Console.WriteLine("Between 100 and 200");
+            }
+            // 4. Проверяваме, дали числото е по-голямо от 200 и изпечатваме на конзолата
+            else if (number>200)
+            {
+                Console.WriteLine("Greater than 200");
+            }
+        }
+    }
+}

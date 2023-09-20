@@ -1,0 +1,50 @@
+using System;
+using System.Drawing;
+
+namespace ConditionalStatementsLab
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            //1. Четем видът на фигурата от конзолата
+            string figure = Console.ReadLine();
+
+            //2. Ако фигурата е квадрат, пресмятаме лицето (а*а )и го отпечатваме на конзолата
+            if (figure == "square")
+            {
+                double squareSide = double.Parse(Console.ReadLine());
+                double squareArea = squareSide * squareSide;
+                Console.WriteLine("{0:F3}", squareArea);
+            }
+            //2. Ако фигурата е правоъгълник, пресмятаме лицето (а*а) и го отпечатваме на конзолата
+            else if (figure == "rectangle")
+            {
+                double rectangleSide1 = double.Parse(Console.ReadLine());
+                double rectangleSide2 = double.Parse(Console.ReadLine());
+                double rectangleArea = rectangleSide1 * rectangleSide2;
+                Console.WriteLine("{0:F3}", rectangleArea);
+            }
+            //2. Ако фигурата е кръг, пресмятаме лицето (PI.r2) и го отпечатваме на конзолата
+            else if (figure == "circle")
+            {
+                double radius = double.Parse(Console.ReadLine());
+                double circleArea = Math.PI * (radius * radius);
+                Console.WriteLine("{0:F3}", circleArea);
+            }
+            //3. Ако фигурата е триъгълник, пресмятаме лицето (h.b)2 и го отпечатваме на конзолата.
+            else if (figure == "triangle")
+            {
+                double triangleSide = double.Parse(Console.ReadLine());
+                double triangleHeight = double.Parse(Console.ReadLine());
+                double triangleArea = (triangleSide * triangleHeight) / 2;
+                Console.WriteLine("{0:F3}", triangleArea);
+            }
+
+
+                
+            
+        }
+    }
+}

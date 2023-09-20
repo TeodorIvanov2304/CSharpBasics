@@ -1,0 +1,55 @@
+using System;
+
+namespace ConditionalStatementsExercise
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //1.Четем входа от конзолата: Бюджет(double),
+            //брой на статистите (int), цена на облекло(double)
+            double budget = double.Parse(Console.ReadLine());
+            int supernumerary = int.Parse(Console.ReadLine());
+            double clothing = double.Parse(Console.ReadLine());
+
+            double decor = budget * 0.10;
+            //2. Намираме цената на декора - 10% от бюджета
+
+            //3. Намираме цената за облеклото  = статистите*цената за облекло
+            double clothPrice = supernumerary * clothing;
+
+            //4. Да проверим дали бр. на статистите >150
+            //   Ако да, има отстъпка -10%
+            if (supernumerary >= 150)
+            {
+                clothPrice = clothPrice - (clothPrice * 0.10);
+            }
+
+            //5. Намираме общата сума (декор + облекло)
+            double finalSum = clothPrice + decor;
+            
+            //6. Изчисляваме оставащите пари
+            double money = budget - finalSum;
+
+            //7. Дали бюджета е достатъчен
+            // Ако бюджета >= на общата сума отпечатваме "Action!"
+            // Wingard starts filming with {останалите пари} leva left
+            // Ако бюджета < на общата сума o	"Not enough money!"
+            // "Wingard needs {парите недостигащи за филма} leva more."
+
+            if (budget >= finalSum)
+            {
+                Console.WriteLine("Action!");
+                Console.WriteLine($"Wingard starts filming with {money:F2} leva left.");
+            }
+            else
+            {
+                money = Math.Abs(money);
+                Console.WriteLine("Not enough money!");
+                Console.WriteLine($"Wingard needs {money:F2} leva more.");
+            }
+            
+
+        }
+    }
+}
