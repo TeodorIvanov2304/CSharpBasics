@@ -1,0 +1,21 @@
+using System; 
+
+namespace _1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int paperRolls = int.Parse(Console.ReadLine());
+            int fabricRolls = int.Parse(Console.ReadLine());
+            double glueLiters = double.Parse(Console.ReadLine());
+            int discount = int.Parse(Console.ReadLine());
+
+            double price = paperRolls * 5.80 + fabricRolls *7.20+ glueLiters * 1.20;
+            double finalPrice = price - price*discount/100;
+
+            Console.WriteLine($"{finalPrice:F3}");
+
+        }
+    }
+}

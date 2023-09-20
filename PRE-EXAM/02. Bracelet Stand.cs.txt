@@ -1,0 +1,28 @@
+using System;
+
+namespace _02._Bracelet_Stand
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double allowance = double.Parse(Console.ReadLine());
+            double profit = double.Parse(Console.ReadLine());
+            double expanses = double.Parse(Console.ReadLine());
+            double presentPrice = double.Parse(Console.ReadLine());
+
+            allowance = allowance * 5;
+            profit = profit * 5;
+            double savedMoney = allowance + profit - expanses;
+            if(savedMoney>=presentPrice)
+            {
+                Console.WriteLine($"Profit: {savedMoney:F2} BGN, the gift has been purchased.");
+            }
+            else
+            {
+                Console.WriteLine($"Insufficient money: {presentPrice-savedMoney:F2} BGN.");
+            }
+
+        }
+    }
+}

@@ -1,0 +1,42 @@
+using System;
+
+namespace _05._Everest
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int start = 5364;
+            int days = 1;
+            bool end = false;
+            string overnightStay = Console.ReadLine();
+            while (overnightStay != "END")
+            {
+                if (overnightStay == "Yes")
+                {
+                    days++;
+                }
+                if(days>5)
+                {
+                    break;
+                }
+                start += int.Parse(Console.ReadLine());
+                if (start >= 8848)
+                {
+                    end = true;
+                    break;
+                }
+                overnightStay = Console.ReadLine();
+            }
+            if (end && days <= 5)
+            {
+                Console.WriteLine($"Goal reached for {days} days!");
+            }
+            else
+            {
+                Console.WriteLine("Failed!");
+                Console.WriteLine(start);
+            }
+        }
+    }
+}

@@ -1,0 +1,58 @@
+using System;
+
+namespace _06._Sum_And_Product
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            bool flag = false;
+            for (int a = 1; a <= 9; a++)
+            {   
+                if (flag)
+                {
+                    break;
+                }
+                for (int b = 9; b >= a; b--)
+                {
+                    if (flag)
+                    {
+                        break;
+                    }
+                    for (int c = 1; c < 10; c++)
+                    {
+                        if (flag)
+                        {
+                            break;
+                        }
+                        for (int d = 8; d >= c; d--)
+                        {
+                            //int sum = a + b + c + d;
+                            //int multy = a * b * c * d;
+                            //if(sum == multy && n%10==5)
+                            if ((a + b + c + d) == (a * b * c * d) && n%10==5)
+                            {
+                                Console.WriteLine($"{a}{b}{c}{d}");
+                                flag = true;
+                                break;
+                            }
+                            //if(sum /multy ==3 && n%3==0)
+                            else if ((a * b * c * d) / (a + b + c + d) == 3&&n%3==0)
+                            {
+                                Console.WriteLine($"{d}{c}{b}{a}");
+                                flag = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!flag)
+            {
+                Console.WriteLine("Nothing found");
+            }
+        }
+    }
+}
