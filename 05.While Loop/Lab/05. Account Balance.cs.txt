@@ -1,0 +1,30 @@
+using System;
+
+namespace _05._Account_Balance
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double sum = 0;
+
+            string input = Console.ReadLine();
+
+            while (input!="NoMoreMoney") 
+            {
+                double newBalance = double.Parse(input); // Ìíîãî âàæíî! ÒÀÊÀ ÑÅ
+                                                         // ÏÀĞÑÂÀ ÊÚÌ ÑÚÙÅÑÒÂÓÂÀÙ ÂÅ×Å STRING
+
+                if(newBalance<=0)
+                {
+                    Console.WriteLine("Invalid operation!");
+                    break;
+                }
+                Console.WriteLine($"Increase: {newBalance:F2}");
+                sum = sum + newBalance;
+                input = Console.ReadLine();
+            }
+            Console.WriteLine($"Total: {sum:F2}");
+        }
+    }
+}

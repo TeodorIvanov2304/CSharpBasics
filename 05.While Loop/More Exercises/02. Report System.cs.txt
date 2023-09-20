@@ -1,0 +1,72 @@
+using System;
+
+namespace _02._Report_System
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int sumNeeded = int.Parse(Console.ReadLine());
+            string input = Console.ReadLine();
+            int counter = 0;
+            int counterCS = 0;
+            int counterCC = 0;
+            int cashSum = 0;
+            int cardSum = 0;
+            int sum = 0;
+            bool success = false;
+            while(input!="End")
+            {
+                counter++;
+                int nextPrice = int.Parse(input);
+
+                if(counter%2==0) // делим на две, за да намерим плащането с карта
+                {
+                    if(nextPrice<10)
+                    {
+                        Console.WriteLine("Error in transaction!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Product sold!");
+                        cardSum = cardSum + nextPrice;
+                        sum  = sum + nextPrice;
+                        counterCC++;
+                    }
+                }
+                else
+                {
+                    if(nextPrice>100)
+                    {
+                        Console.WriteLine("Error in transaction!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Product sold!");
+                        cashSum = cashSum + nextPrice;
+                        sum = sum + nextPrice;
+                        counterCS++;
+                    }
+                }
+                if(sum>=sumNeeded) 
+                {
+                    success = true;
+                    break;
+                }
+                input = Console.ReadLine();
+            }
+
+            if (success)
+            {
+                double averageCS = (double)cashSum/ counterCS;
+                double averageCC = (double)cardSum/ counterCC;
+                Console.WriteLine($"Average CS: {averageCS:F2}");
+                Console.WriteLine($"Average CC: {averageCC:F2}");
+            }
+            else
+            {
+                Console.WriteLine("Failed to collect required money for charity.");
+            }
+        }
+    }
+}

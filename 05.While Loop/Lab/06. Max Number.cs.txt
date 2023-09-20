@@ -1,0 +1,25 @@
+using System;
+
+namespace _06._Max_Number
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {   
+            string input = Console.ReadLine();
+            int maxNumber = int.MinValue;
+
+            while(input!="Stop")
+            {
+                int nextNumber = int.Parse(input);
+                input = Console.ReadLine();
+                if(nextNumber > maxNumber)
+                {
+                    maxNumber = nextNumber;
+                }
+            }
+            Console.WriteLine(maxNumber);
+
+        }
+    }
+}

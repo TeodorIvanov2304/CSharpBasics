@@ -1,0 +1,44 @@
+using System; 
+
+namespace _01._Old_Books
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // 1. Четем от конзолата любомата книга на Ани
+            string favoriteBook = Console.ReadLine();
+
+            // 2. Създаваме променлива, която ще пази бр. на неуспешните опити
+            int count = 0;
+            string input = string.Empty;
+            // 3. Създаваме цикъл, който да се изпълнява, докато не минем през
+
+            while (input != "No More Books")
+            {
+                //-> Четем заглавие на текуща книга
+                input = Console.ReadLine();
+
+                //    всички кинги в библиотеката (докато получим като вход съобщението No More Books
+                //-> Проверяваме дали това е книгата, която търсим
+                if (input == favoriteBook)
+                {
+                    //-> Отчепатваме на конзолата, че сме я намерили и спираме цикъла
+                    Console.WriteLine($"You checked {count} books and found it.");
+                    break;
+                }
+                //4. Проверяваме дали последният вход == No More Books
+                if (input == "No More Books")
+                {
+                    //-> Ако е , оптечатваме на конзолата 
+                    Console.WriteLine($"The book you search is not here!");
+                    Console.WriteLine($"You checked {count} books.");
+
+                }
+                //-> Ако не е, увеличаваме брояча на неуспените опити + 1
+                count++; // Слагаме брояча накрая, за да не брои намерената книга
+            }
+             
+        }
+    }
+}

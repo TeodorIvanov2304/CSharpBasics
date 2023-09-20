@@ -1,0 +1,77 @@
+using System;
+
+namespace _03._Vacation
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1. Четем от конзолата необходимите пари и налични до момента
+            double neededMoney = double.Parse(Console.ReadLine());
+            double availableMoney = double.Parse(Console.ReadLine());
+
+            // Създаване броячи за общия брой дни и за поредните дни, в които само харчи
+            int daysCount = 0;
+            int spendCount = 0;
+            //2. Създаваме цикъл, който се събира докато не събере нужните пари
+            while (availableMoney<neededMoney) 
+            {
+                //-> Четем вид действие  "spend" и "save"
+                string input = Console.ReadLine();
+                //-> Четем сума, която харчи/спестява
+                double money = double.Parse(Console.ReadLine());
+                //->Увеличаваме брояча на общия брой дни с 1
+                daysCount++;
+                //Проверяваме дали действието е "spend"
+                if (input=="spend")
+                {
+                    // увеличаваме броячя на поредните дни харчене с 1
+                    spendCount++;
+
+                    // Проверяваме дали 5 поредни дни само харчи
+                    if (spendCount==5)
+                    {
+                        Console.WriteLine("You can't save the money.");
+                        Console.WriteLine($"{daysCount}");
+                        break;
+                    }
+                    availableMoney -= money;
+                    if(availableMoney<0)
+                    {
+                        availableMoney = 0;
+                    }
+                }
+                else
+                {
+                    availableMoney += money;
+                    spendCount = 0;
+                }
+            }
+            if(availableMoney>=neededMoney) 
+            {
+                Console.WriteLine($"You saved the money for {daysCount} days.");
+            }
+
+
+
+
+
+            
+            
+            
+            //-->	""
+            //      "{Общ брой изминали дни}" и спираме цикъла break;
+
+            //-> от наличността до момента изваждаме сумата, която харчи
+            // 
+            //-> проверяваме, дали наличността е станала < 0 - > трябва да я занулим
+
+            // Проверяваме дали действието е "save"
+            //->  добавяме сумата към наличността до момента
+            //-> Нулираме брояча на поредните дни харчене
+
+            //3. Проверяваме дали е спестила достатъчно, и ако е отпечатваме
+            // -> "You saved the money for {общ брой изминали дни} days."
+        }
+    }
+}
