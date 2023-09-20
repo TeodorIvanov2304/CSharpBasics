@@ -1,0 +1,39 @@
+using System;
+using System.Runtime.ConstrainedExecution;
+
+namespace ConditionalStatementsExercise
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {   
+            //1. Четем входа от конзолата: Световният рекоред, разстоянието, времето, за което плува 1 м
+            double worldRecord = double.Parse(Console.ReadLine());
+            double distance = double.Parse(Console.ReadLine());
+            double timePerMeter = double.Parse(Console.ReadLine());
+
+            //2. Намираме за колко време Иван ще прелува разстоянието
+            // => Растояението*времето  за което плува 1 м.
+            double recordByIvan = distance*timePerMeter;
+
+            //3. Намираме колко пъти Иван ще се забави
+            // => разстоянието / 15;
+            double delay = distance / 15;
+
+            //4. Добавяме към времето на Иван, времето с което се забавя
+            // => времето на Иван + закрълено нагоре (броя на забавянията)*12.5
+            recordByIvan = recordByIvan + Math.Floor(delay)*12.5;
+
+            //5. Проверяваме дали Иван е подобрил световния рекорд
+            if(recordByIvan<worldRecord)
+            {
+                Console.WriteLine($"Yes, he succeeded! The new world record is {recordByIvan:F2} seconds.");
+            }
+            else
+            {
+                Console.WriteLine($"No, he failed! He was {Math.Abs(worldRecord -recordByIvan):F2} seconds slower.");
+                //Console.WriteLine($"No, he failed! He was {Math.Abs(recordByIvan-worldRecord):F2} seconds slower.")
+            }
+        }
+    }
+}
