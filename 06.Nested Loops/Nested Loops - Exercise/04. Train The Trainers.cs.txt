@@ -1,0 +1,37 @@
+using System;
+
+namespace _04._Train_The_Trainers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            string presentation = Console.ReadLine();
+            double grade = 0;
+            double allGrades = 0;
+            double averagePresentationGrade = 0;
+            double currentGrade = 0;
+            int gradeCount= 0;
+            int presentationCount = 0;
+            while(presentation!="Finish")
+            {
+                for (int i = 1; i <= n; i++)
+                {
+                    grade = double.Parse(Console.ReadLine());
+                    allGrades = allGrades + grade;
+                    currentGrade = currentGrade + grade;
+                    gradeCount++;
+                }
+                presentationCount++;
+                averagePresentationGrade = currentGrade / n;
+                Console.WriteLine($"{presentation} - {averagePresentationGrade:F2}.");
+                currentGrade = 0;
+
+
+                presentation = Console.ReadLine();
+            }
+            Console.WriteLine($"Student's final assessment is {(double)allGrades/gradeCount:F2}.");
+        }
+    }
+}

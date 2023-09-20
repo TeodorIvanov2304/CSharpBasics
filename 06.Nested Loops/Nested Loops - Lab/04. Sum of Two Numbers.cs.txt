@@ -1,0 +1,39 @@
+using System;
+
+namespace _03._Combinations
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int start = int.Parse(Console.ReadLine());
+            int end  = int.Parse(Console.ReadLine());
+            int magicNumber = int.Parse(Console.ReadLine());
+
+            int counter = 0;
+            bool flag = false;
+
+            for (int i = start; i <=end; i++)
+            {   
+                if(flag)
+                {
+                    break;
+                }
+                for (int j = start; j <=end; j++)
+                {
+                    counter++;
+                    if((i+j)==magicNumber) // брейкваме само този цикъл,но продължаваме горняи
+                    {
+                        Console.WriteLine($"Combination N:{counter} ({i} + {j} = {(i + j)})");
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+            if(!flag) // флаг не е true // различно(!) от флаг
+            {
+                Console.WriteLine($"{counter} combinations - neither equals {magicNumber}");
+            }
+        }
+    }
+}

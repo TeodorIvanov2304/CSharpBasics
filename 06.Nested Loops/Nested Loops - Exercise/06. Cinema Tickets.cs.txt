@@ -1,0 +1,71 @@
+using System;
+
+namespace _06._Cinema_Tickets
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1. Създаваме променливи, които да пазят бр. продадени билети от всяка катергория
+            // --> ("student", "standard", "kid")
+            int studentTickets = 0;
+            int standardTickets = 0;
+            int kidsTickets = 0;
+
+            string filmName = Console.ReadLine();
+            //2. Създаваме цикъл за отделните прожекции до получаване на "Finish"
+
+            while(filmName!="Finish")
+            {
+                //--> за всяка прожекция получаваме име на филм
+                //--> четем бр. на свободните места в залата
+                int free = int.Parse(Console.ReadLine());
+                string type = Console.ReadLine();  //-->Четем тим продаден билет - ("student", "standard", "kid")
+                int tickets = 0;
+                //--> създаваме цикъл, който да се изпълнява до "End"
+                while (type!="End")
+                {
+                    //--> Увеличаваме бр. на съответната категория билети
+                    //--> Увеличаваме бр. на продадените билети за КОНКРЕТНАТА прожекция
+                    switch (type)
+                    {
+                        case "student": studentTickets++; tickets++; 
+                            break;
+                        case "standard": standardTickets++; tickets++;
+                            break;
+                        case "kid": kidsTickets++; tickets++;
+                            break;
+                    }
+                    //--> Проверяваме дали бр. на свободните места за КОНКРЕТНАТА прожекция == бр. продадени билети
+                    //--> Спираме изпълнението на цикъла
+                    if (tickets==free)
+                    {
+                        break;
+                    }
+                    type = Console.ReadLine();
+                }
+                //--> Отпечатваме какъв % от залата е запълнена "{името на филма} - {процент запълненост на залата}% full."
+                Console.WriteLine($"{filmName} - {(double)tickets*100/free:F2}% full.");
+
+                //--> Четем нов вход от конзолата (име на филм)
+                filmName = Console.ReadLine();
+
+            }
+            //3. Намираме колко общо билета са продадени от всички прожекции и отпечатаваме на конзолата
+            // "student" +  "standard" + "kid"
+            int totalTickets = standardTickets + studentTickets + kidsTickets;
+
+            //4.Намираме какъв процент от всички билети са били student/standard/kid и отпечатаваме на конзолата:
+            // "Total tickets: {общият брой закупени билети за всички филми}"
+            // "{процент на студентските билети}% student tickets."
+            // "{процент на стандартните билети}% standard tickets."
+            // "{процент на детските билети}% kids tickets."
+            Console.WriteLine($"Total tickets: {totalTickets}");
+            Console.WriteLine($"{(double)studentTickets*100/totalTickets:F2}% student tickets.");
+            Console.WriteLine($"{(double)standardTickets * 100 / totalTickets:F2}% standard tickets.");
+            Console.WriteLine($"{(double)kidsTickets * 100 / totalTickets:F2}% kids tickets.");
+
+
+        }
+    }
+}

@@ -1,0 +1,30 @@
+using System;
+
+namespace _02._Letters_Combinations
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            char beginning = char.Parse(Console.ReadLine());
+            char end = char.Parse(Console.ReadLine());
+            char miss = char.Parse(Console.ReadLine());
+            int combinationCounter = 0;
+            for (char i = beginning; i <= end; i++)
+            {
+                for (char j = beginning; j <= end; j++)
+                {
+                    for (char k = beginning; k <= end; k++)
+                    {   
+                        if(i != miss && j != miss && k != miss)
+                        {
+                            Console.Write($"{i}{j}{k} ");
+                            combinationCounter++;
+                        }
+                    }
+                }
+            }
+            Console.Write(combinationCounter);
+        }
+    }
+}

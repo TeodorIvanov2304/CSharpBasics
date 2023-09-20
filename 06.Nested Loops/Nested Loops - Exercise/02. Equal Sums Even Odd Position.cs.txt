@@ -1,0 +1,46 @@
+using System;
+
+namespace _02._Equal_Sums_Even_Odd_Position
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // 1. Четем начало и край на диапазаона
+            int firstNumber = int.Parse(Console.ReadLine());
+            int secondNumber = int.Parse(Console.ReadLine());
+            // 2. Създаваме цикъл, който се изпълнява от 1-во до последно число в диапазона
+            for (int num = firstNumber; num <= secondNumber; num++)
+            {
+                int oddSum = 0;
+                int evenSum = 0;
+                string currentNum = num.ToString(); // currentNum = "100000";
+                // 3. Създаваме вътрешен цикъл, който да преминава през всички цифри от текущото число
+                for (int i = 0; i < currentNum.Length; i++)
+                {
+                    //--> проверяваме текущата цифра дали е на четна/нечетна позиция
+                    if (i%2 == 0)
+                    {
+                        //--> при четна позиция: добавяме числото към сумата на числата на четна позиция
+                        evenSum = evenSum + currentNum[i];
+                    }
+                    else
+                    {
+                        //--> при НЕчетна позиция: добавяме числото към сумата на числата на НЕчетна позиция
+                        oddSum = oddSum + currentNum[i];
+                    }
+                }
+                //4. Проверяваме дали сумите са равни
+                if (evenSum==oddSum)
+                {
+                    Console.Write(currentNum + " ");
+                }
+                
+                
+                
+                //--> ако са, отпечатваме числото
+            }
+
+        }
+    }
+}

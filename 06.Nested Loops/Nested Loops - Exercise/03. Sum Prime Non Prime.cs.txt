@@ -1,0 +1,67 @@
+using System;
+
+namespace _03._Sum_Prime_Non_Prime
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1. Четем вход от конзолата (string)
+            string input  = Console.ReadLine();
+            int primeSum = 0;
+            int nonPrimeSum = 0;
+            //2. Създаваме цикъл, който да се изпълнява до получаване на командата "Stop"
+            while(input!="stop") 
+            {
+                //--> преобразуваме входът в число
+                int num = int.Parse(input);
+
+                //--> проверяваме дали числото < 0 (отрицателно)
+                if (num<0)
+                {
+                    //==> ако е отпечатваме "Number is negative.", четем си нов вход и преминaваме към следващото завъртане с CONTINUE!!!
+                    Console.WriteLine("Number is negative.");
+                    input = Console.ReadLine();
+                    continue; 
+                }
+                //--> проверяваме числото дали е просто или не е:
+                bool isPrime = true; //==> Приемаме, че числото е просто
+
+                //--> пускаме цикъл, който се изпълнява до числото - 1 (включително)
+                for (int i = 2; i < num-1; i++)
+                {
+                    //==> делим числото модулно на i и ако получим 0, числото не е просто и спираме вътрешния цикъл
+                    if (num%i==0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                //3. В зависимост дали числото е просто или не го добавяме към съответната сума
+                if (isPrime) 
+                {
+                    primeSum = primeSum + num;
+                }
+                else
+                {
+                    nonPrimeSum = nonPrimeSum + num;
+                }
+                //--> четем нов вход от конзолата 
+                input = Console.ReadLine();
+            }
+
+            Console.WriteLine($"Sum of all prime numbers is: {primeSum}");
+            Console.WriteLine($"Sum of all non prime numbers is: {nonPrimeSum}");
+
+
+
+
+
+
+
+
+
+            //4. Отпечатваме резултата на конзолата
+        }
+    }
+}
