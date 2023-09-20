@@ -1,0 +1,21 @@
+using System;
+
+namespace _01._Change_Bureau
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int bitcoins = int.Parse(Console.ReadLine());
+            double iuans = double.Parse(Console.ReadLine());
+            double commission = double.Parse(Console.ReadLine());
+
+            bitcoins = bitcoins * 1168; double bitcointInEuro = bitcoins / 1.95;
+            iuans = iuans * 0.15; iuans = iuans * 1.76; iuans = iuans / 1.95;
+            double sum = bitcointInEuro + iuans;
+            commission = commission / 100;
+            sum = sum - (sum * commission);
+            Console.WriteLine($"{sum:f2}");
+        }
+    }
+}

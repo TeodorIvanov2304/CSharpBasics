@@ -1,0 +1,72 @@
+using System;
+
+namespace _07._Trekking_Mania
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Катерачи от цяла България се събират на групи и набелязват следващите върхове за изкачване. Според размера на групата, катерачите ще изкачват различни върхове.
+            //	Група до 5 човека – изкачват Мусала
+            //	Група от 6 до 12 човека – изкачват Монблан
+            //	Група от 13 до 25 човека – изкачват Килиманджаро
+            //	Група от 26 до 40 човека –  изкачват К2
+            //	Група от 41 или повече човека – изкачват Еверест
+            //Да се напише програма, която изчислява процента на катерачите изкачващи всеки връх.
+            //Вход
+            //От конзолата се четат поредица от числа, всяко на отделен ред:
+            //	На първия ред – броя на групите от катерачи – цяло число в интервала[1...1000]
+            //	За всяка една група на отделен ред – броя на хората в групата – цяло число в интервала[1...1000]
+
+            int climberGroups = int.Parse(Console.ReadLine());
+            int peopleInGroup;
+            int climbersCount = 0;
+            int countMussala = 0;
+            int countMonblanc = 0;
+            int countKilimandjaro = 0;
+            int countK2 = 0;
+            int countEverest = 0;
+
+            for (int i = 1; i <= climberGroups; i++)
+            {
+                peopleInGroup = int.Parse(Console.ReadLine());
+                climbersCount = climbersCount + peopleInGroup;
+                if (peopleInGroup < 6)
+                {
+                    countMussala = countMussala + peopleInGroup;
+                }
+                else if (peopleInGroup <= 12)
+                {
+                    countMonblanc = countMonblanc + peopleInGroup;
+                }
+                else if (peopleInGroup <= 25)
+                {
+                    countKilimandjaro = countKilimandjaro + peopleInGroup;
+                }
+                else if (peopleInGroup <= 40)
+                {
+                    countK2 = countK2 + peopleInGroup;
+                }
+                else
+                {
+                    countEverest = countEverest + peopleInGroup;
+                }
+            }
+            double p1 = (double)countMussala / climbersCount * 100;
+            // задаваме временна стойност на Count double, // защото иначе има целочиследно деление!! ВАЖНО!!
+            double p2 = (double)countMonblanc / climbersCount * 100; ;
+            double p3 = (double)countKilimandjaro / climbersCount * 100; ;
+            double p4 = (double)countK2 / climbersCount * 100; ;
+            double p5 = (double)countEverest / climbersCount * 100; ;
+
+
+            //4. Отпечатваме изходите на конзолата
+            // -> {процента:F2} %
+            Console.WriteLine($"{p1:F2}%");
+            Console.WriteLine($"{p2:F2}%");
+            Console.WriteLine($"{p3:F2}%");
+            Console.WriteLine($"{p4:F2}%");
+            Console.WriteLine($"{p5:F2}%");
+        }
+    }
+}

@@ -1,0 +1,80 @@
+using System;
+
+namespace _06._Tournament_of_Christmas
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Задача 6.Коледен турнир
+            //Напишете програма, която проследява представянето на вашия отбор на благотворителен коледен турнир.  Всеки ден получавате имена на игри до команда "Finish".Със спечелването на всяка една игра печелите по 20лв.за благотворителност. Трябва да изчислите колко пари сте спечелили на края на деня.Ако имате повече спечелени игри, отколкото загубени – вие сте победители този ден и увеличавате парите от него с 10 %.При приключване на турнира ако през повечето дни сте били победители печелите турнира и увеличавате всичките спечелени пари с 20 %.
+            //Никога няма да имате равен брой спечелени и загубени игри.
+            //Вход
+            //Първоначално от конзолата се прочита броя дни на турнира – цяло число в интервала[1… 20]
+            //До получаване на командата "Finish" се чете:
+            //	Спорт  – текст
+            //За всеки спорт се прочита:
+            //o Резултат  – текст с възможности: "win" или "lose"
+            //Изход
+            //Накрая се отпечатва един ред:
+            //	Ако сте спечелили турнира:
+            // "You won the tournament! Total raised money: {спечелените пари}"
+            //	Ако сте загубили на турнира:
+            //  "You lost the tournament! Total raised money: {спечелените пари}"
+            //Парите да бъдат форматирани до втората цифра след десетичния знак.
+
+
+            int days = int.Parse(Console.ReadLine());
+            double money = 0;
+            double allMoney = 0;
+            int wins = 0;
+            int losses = 0;
+            int dailyWins = 0;
+            int dailyLosses = 0;
+            
+            for (int i = 0; i < days; i++)
+            {
+                string sport = Console.ReadLine();
+
+                while(sport != "Finish")
+                {
+                    string result = Console.ReadLine();
+                    if(result == "win")
+                    {
+                        money = money + 20;
+                        wins++;
+                    }
+                    else
+                    {
+                        losses++;
+                    }
+                    sport = Console.ReadLine();
+                    
+                }
+                if(wins>losses)
+                {
+                    money = money * 1.10;
+                    allMoney = allMoney + money;
+                    dailyWins++;
+                }
+                else 
+                {
+                    allMoney = allMoney + money;
+                    dailyLosses++;
+                }
+                wins = 0; 
+		losses = 0;
+		money = 0;
+            }
+            if(dailyWins>dailyLosses)
+            {
+                allMoney = allMoney * 1.20;
+                Console.WriteLine($"You won the tournament! Total raised money: {allMoney:f2}");
+            }
+            else
+            {
+                Console.WriteLine($"You lost the tournament! Total raised money: {allMoney:f2}");
+            }
+        }
+    }
+}

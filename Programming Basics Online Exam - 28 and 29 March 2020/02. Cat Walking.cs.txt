@@ -1,0 +1,25 @@
+using System;
+
+namespace _02._Cat_Walking
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int minutesWalkin = int.Parse(Console.ReadLine());
+            int walksPerDay = int.Parse(Console.ReadLine());
+            int caloriesConsumed = int.Parse(Console.ReadLine());
+
+            int burnedCalories = minutesWalkin * 5 * walksPerDay;
+
+            if(burnedCalories>=caloriesConsumed/2)
+            {
+                Console.WriteLine($"Yes, the walk for your cat is enough. Burned calories per day: {burnedCalories}.");
+            }
+            else
+            {
+                Console.WriteLine($"No, the walk for your cat is not enough. Burned calories per day: {burnedCalories}.");
+            }
+        }
+    }
+}

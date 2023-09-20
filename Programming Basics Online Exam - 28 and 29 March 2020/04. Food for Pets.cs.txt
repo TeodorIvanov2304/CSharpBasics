@@ -1,0 +1,41 @@
+using System;
+
+namespace _04._Food_for_Pets
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int days = int.Parse(Console.ReadLine());
+            double foodInGrams = double.Parse(Console.ReadLine());
+            double biscuits = 0;
+            double catFoodEaten = 0;
+            double dogFoodEaten = 0;
+
+            for (int i = 1; i <= days; i++)
+            {
+                int dogFood = int.Parse(Console.ReadLine());
+                int catFood = int.Parse(Console.ReadLine());
+                   if (i%3==0)
+                {
+                    biscuits += (dogFood + catFood) * 0.10;
+                }
+                
+                dogFoodEaten += dogFood;
+                catFoodEaten += catFood;
+
+
+
+            }
+            double allFood = dogFoodEaten + catFoodEaten;
+            double eatenPercentage = (allFood / foodInGrams) * 100;
+            double dogPercentage = (dogFoodEaten/ allFood) * 100;
+            double catPercentage = (catFoodEaten / allFood) * 100;
+
+            Console.WriteLine($"Total eaten biscuits: {Math.Round(biscuits)}gr.");
+            Console.WriteLine($"{eatenPercentage:f2}% of the food has been eaten.");
+            Console.WriteLine($"{dogPercentage:f2}% eaten from the dog.");
+            Console.WriteLine($"{catPercentage:f2}% eaten from the cat.");
+        }
+    }
+}

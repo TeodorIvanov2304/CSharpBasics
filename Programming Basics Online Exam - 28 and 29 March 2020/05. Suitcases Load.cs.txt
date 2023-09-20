@@ -1,0 +1,62 @@
+using System;
+
+namespace _05._Suitcases_Load
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Задача 5.Товарене на багажи
+            //Напишете програма, която ви помага при товаренето на куфари в багажника на самолет. Всеки самолет има определен капацитет на багажника.До получаване на команда "End" ще получавате обем на куфар.Обемът на всеки трети куфар трябва да се увеличава с 10 %, поради загубата на пространство при начина на подреждане. Ако свободното пространството в даден момент е по-малко от обема на куфар товаренето трябва да прекъсне.
+            //Вход
+            //Първоначално се чете един ред:
+            //•	Капацитетът на багажника – реално число в диапазона[100.0…6000.0]
+            //След това до получаване на команда "End" или до запълване на багажника, се чете по един ред:
+            //            o Обем на куфар – реално число в диапазона[100.0…6000.0]
+            //Изход
+            //На конзолата да се отпечатат следните редове според случая:
+            //•	При получаване на командата "End" се печата:
+            //"Congratulations! All suitcases are loaded!"
+            //•	Ако обемът на куфара е по-голям от оставащото пространство в багажника:
+            //            "No more space!"
+            //•	Накрая винаги се отпечатва статистика – колко багажа са натоварени:
+            //"Statistic: {брой натоварени багажи} suitcases loaded."
+
+            double luggadgeCapacity = double.Parse(Console.ReadLine());
+            int suitcases = 0;
+            string input = Console.ReadLine();
+
+            while (input != "End")
+            {
+                suitcases++;
+                double luggadge = double.Parse(input);
+                
+                if (suitcases % 3 == 0)
+                {
+                    luggadge = luggadge * 1.10;
+                }
+
+                luggadgeCapacity -= luggadge;
+
+                if (luggadgeCapacity < 0)
+                {
+                    suitcases--;
+                    break;
+                }
+
+                  
+                input = Console.ReadLine();
+                
+            }
+            if (luggadgeCapacity >= 0)
+            {
+                Console.WriteLine($"Congratulations! All suitcases are loaded!");
+            }
+            else
+            {
+                Console.WriteLine("No more space!");
+            }
+            Console.WriteLine($"Statistic: {suitcases} suitcases loaded.");
+        }
+    }
+}
