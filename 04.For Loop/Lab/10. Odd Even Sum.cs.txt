@@ -1,0 +1,44 @@
+using System;
+
+namespace _10._Odd_Even_Sum__2_
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Да се напише програма, която чете n-на брой цели числа, подадени от потребителя и проверява дали сумата от числата на четни позиции е равна на сумата на числата на нечетни позиции. 
+            // Ако сумите са равни да се отпечатат два реда: "Yes" и на нов ред "Sum = " + сумата; 
+            // Ако сумите не са равни да се отпечат два реда: "No" и на нов ред "Diff = " + разликата.
+            // Разликата се изчислява по абсолютна стойност. 
+
+            int n = int.Parse(Console.ReadLine());
+
+            int oddSum = 0; // създаваме променлива за сумата от нечетните редове
+            int evenSum = 0; // създаваме променлива за сумата от четните редове
+
+            for (int i = 1; i <= n; i++) // създаваме цикъл, който започва от 1, защото първият ред ще е 1
+            {
+                int newNumber = int.Parse(Console.ReadLine());
+
+                if(i%2==0) // проверяваме дали числото е четно , ако е го прибавяме към evenSum
+                {
+                    evenSum = evenSum + newNumber;
+                }
+                else      // ако не е , прибавяме към oddSum
+                {
+                    oddSum = oddSum + newNumber;
+                }
+            }
+            if(oddSum == evenSum)  // сравняваме двете суми и изпечатваме на конзолата
+            {
+                Console.WriteLine("Yes");
+                Console.WriteLine("Sum = " + oddSum);
+            }
+            else
+            {
+                Console.WriteLine("No");
+                Console.WriteLine("Diff = " + (Math.Abs(oddSum - evenSum)));
+            }
+        }
+    }
+}

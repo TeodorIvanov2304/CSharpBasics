@@ -1,0 +1,50 @@
+using System;
+
+namespace EqualPairs
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {   
+
+            // ТОВА МЕ ЗАТРУДНИ ИЗКЛЮЧИТЕЛНО МНОГО!!! ПРОБЛЕМЪТ БЕШЕ, ЧЕ НЕ ЗНАЕХ КАК ДА ВАДЯ ПОСЛЕДОВАТЕЛНИ СУМИ.
+            int n = int.Parse(Console.ReadLine());
+
+            double sum = 0;
+            double difference = 0;   
+            double maxDifference = 0;
+
+            for (int i = 1; i <=n; i++)
+            {
+                double num1 = double.Parse(Console.ReadLine());
+                double num2 = double.Parse(Console.ReadLine());
+                double currentSum = num1 + num2;
+                if (i == 1)   // Задаваме първоначалната сума за първата двойка числа i ==1
+                {
+                    sum = currentSum;
+                }
+                else
+                {
+                    difference = Math.Abs(sum - currentSum); 
+                    // Абсолютната разлика между сегашната и предишната сума sum - currentSum се запазва
+                    // в променливата difference
+                    sum = currentSum;
+                    // на sum се придава новата стойност current sum
+                }
+                if (difference > maxDifference) 
+                    // ако разликата е по-голяма от максималната разлика се замества
+                {
+                    maxDifference = difference;
+                }
+            }
+            if (difference == 0) // ако разликата е равна на 0
+            {
+                Console.WriteLine($"Yes, value={sum}");
+            }
+            else
+            {
+                Console.WriteLine($"No, maxdiff={maxDifference}");
+            }
+        }
+    }
+}

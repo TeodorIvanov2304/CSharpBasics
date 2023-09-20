@@ -1,0 +1,48 @@
+using System;
+
+namespace _04._Clever_Lily
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int age = int.Parse(Console.ReadLine());
+            double washingMashine = double.Parse(Console.ReadLine());
+            int toyPrice = int.Parse(Console.ReadLine());
+
+            double sum = 0;
+            int toy = 0;
+            int birthdayMoney = 0;
+
+            for (int i = 2; i <= age; i++)
+            {
+                
+                if(i%2==0) // äåëèì i íà 2, çàùîòî i ÄÚÐÆÈ ÒÅÊÓÙÀÒÀ ÂÚÇÐÀÑÒ
+                {
+                    birthdayMoney = birthdayMoney + (i * 5)-1; 
+                    // óìíîæàâàìå ïî 5, çàùîòî íà âñåêè 2 ã. ñå âäèãàò ñ ïî 5 ëâ. èëè 10 íà 2 ã.
+                }
+                
+            }
+            for (int i = 1; i <= age; i++)
+            {
+                if(i%2!=0) // äåëèì i íà 2, çàùîòî i ÄÚÐÆÈ ÒÅÊÓÙÀÒÀ ÂÚÇÐÀÑÒ, Â ÑËÓ×Àß ÍÅ×ÅÒÍÀ
+                {
+                    toy++;
+                }
+            }
+
+            toyPrice = toy * toyPrice;
+            sum = birthdayMoney + toyPrice;
+
+            if(sum>=washingMashine)
+            {
+                Console.WriteLine($"Yes! {sum-washingMashine:F2}");
+            }
+            else
+            {
+                Console.WriteLine($"No! {washingMashine-sum:F2}");
+            }
+        }
+    }
+}

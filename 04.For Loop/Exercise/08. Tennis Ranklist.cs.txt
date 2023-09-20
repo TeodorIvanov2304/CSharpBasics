@@ -1,0 +1,50 @@
+using System;
+
+namespace _08._Tennis_Ranklist
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Григор Димитров е тенисист, чиято следваща цел е изкачването в световната ранглиста по тенис за мъже.
+            //През годината Гришо участва в определен брой турнири, като за всеки турнир получава точки, които зависят от позицията, на която е завършил в турнира.Има три варианта за завършване на турнир:
+            //	W - ако е победител получава 2000 точки
+            //	F - ако е финалист получава 1200 точки
+            //	SF - ако е полуфиналист получава 720 точки
+            //Напишете програма, която изчислява колко ще са точките на Григор след изиграване на всички турнири, като знаете с колко точки стартира сезона.Също изчислете колко точки средно печели от всички изиграни турнири и колко процента от турнирите е спечелил.
+            // От конзолата първо се четат два реда:
+            // Брой турнири, в които е участвал – цяло число в интервала[1…20] 
+            // Начален брой точки в ранглистата - цяло число в интервала[1...4000]
+            // За всеки турнир се прочита отделен ред:
+            // Достигнат етап от турнира – текст – "W", "F" или "SF"
+
+            int tournaments = int.Parse(Console.ReadLine());
+            int startingPoints = int.Parse(Console.ReadLine());
+            int finalPoints = 0;
+            int wins = 0;
+            for (int i = 1; i <= tournaments; i++)
+            {
+                string performance = Console.ReadLine();
+                if(performance == "W")
+                {
+                    finalPoints = finalPoints + 2000;
+                    wins++;
+                }
+                else if(performance == "F")
+                {
+                    finalPoints = finalPoints + 1200;
+                }
+                else if(performance == "SF")
+                {
+                    finalPoints = finalPoints + 720;
+                }
+            }
+            finalPoints = finalPoints + startingPoints;
+            int averagePoints = (finalPoints-startingPoints) / tournaments;
+            double percentage = (double) wins / tournaments * 100;
+            Console.WriteLine($"Final points: {finalPoints}");
+            Console.WriteLine($"Average points: {averagePoints}");
+            Console.WriteLine($"{percentage:F2}%");
+        }
+    }
+}

@@ -1,0 +1,38 @@
+using System;
+
+namespace _02._Half_Sum_Element
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Да се напише програма, която чете n-на брой цели числа, въведени от потребителя,и проверява дали сред тях съществува число, което е равно на сумата на всички останали. 
+            // елемент печата "Yes" и на нов ред "Sum = " + неговата стойност
+            // елемент печата "No" и на нов ред "Diff = " + разликата между най-големия елемент
+            // останалите(по абсолютна стойност)
+            int n = int.Parse(Console.ReadLine());
+            double sum = 0;
+            int biggestNumber = int.MinValue;
+            for (int i = 1; i <= n; i++) 
+            {
+                int nextNumber = int.Parse(Console.ReadLine());
+                sum = sum+ nextNumber;
+                if(nextNumber> biggestNumber)
+                {
+                    biggestNumber = nextNumber;
+                }
+                
+            }
+            if (sum - biggestNumber==biggestNumber)
+            {
+                Console.WriteLine("Yes");
+                Console.WriteLine("Sum = " + biggestNumber);
+            }
+            else
+            {
+                Console.WriteLine("No");
+                Console.WriteLine("Diff = " + (Math.Abs(biggestNumber-(sum-biggestNumber))));
+            }
+        }
+    }
+}

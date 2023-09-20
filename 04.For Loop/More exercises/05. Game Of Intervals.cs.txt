@@ -1,0 +1,70 @@
+using System;
+
+namespace _05._Game_Of_Intervals
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int gameMoves = int.Parse(Console.ReadLine());
+            int gameNumbers = 0;
+            double score = 0;
+            double between0And9  = 0;
+            double between10And19 = 0;
+            double between20And29 = 0;
+            double between30And39 = 0;
+            double between40And50 = 0;
+            double invalidNumbers = 0;
+
+            for (int i = 1; i <= gameMoves; i++)
+            {
+                gameNumbers = int.Parse(Console.ReadLine());
+                
+                if (gameNumbers>=0&&gameNumbers<=9)
+                {
+                    score = score + (gameNumbers*0.20);
+                    between0And9 = between0And9 + 1;
+                }
+                else if(gameNumbers>=10&&gameNumbers<=19)
+                {
+                    score = score + (gameNumbers * 0.30);
+                    between10And19 = between10And19 + 1;
+                }
+                else if( gameNumbers>=20&&gameNumbers<=29)
+                {
+                    score = score + (gameNumbers * 0.40);
+                    between20And29 = between20And29 + 1;
+                }
+                else if(gameNumbers>=30&&gameNumbers<=39)
+                {
+                    score = score + 50;
+                    between30And39 = between30And39 + 1;
+                }
+                else if(gameNumbers>=40&&gameNumbers<=50)
+                {
+                    score = score + 100;
+                    between40And50 = between40And50 + 1;
+                }
+                else if(gameNumbers<0||gameNumbers>50)
+                {
+                    score = (double)score / 2.0;
+                    invalidNumbers = invalidNumbers + 1;
+                }
+            }
+            double pBetween0And9 = (double)between0And9 / gameMoves * 100;
+            double pBetween10And19 = (double)between10And19 / gameMoves * 100;
+            double pBetween20And29 = (double)between20And29 / gameMoves * 100;
+            double pBetween30And39 = (double)between30And39 / gameMoves * 100;
+            double pBetween40And50 = (double)between40And50 / gameMoves * 100;
+            double pInvalidNumbers = (double)invalidNumbers / gameMoves * 100;
+
+            Console.WriteLine($"{score:F2}");
+            Console.WriteLine($"From 0 to 9: {pBetween0And9:F2}%");
+            Console.WriteLine($"From 10 to 19: {pBetween10And19:F2}%");
+            Console.WriteLine($"From 20 to 29: {pBetween20And29:F2}%");
+            Console.WriteLine($"From 30 to 39: {pBetween30And39:F2}%");
+            Console.WriteLine($"From 40 to 50: {pBetween40And50:F2}%");
+            Console.WriteLine($"Invalid numbers: {pInvalidNumbers:F2}%");
+        }
+    }
+}

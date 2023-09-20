@@ -1,0 +1,46 @@
+using System;
+
+namespace _03._Logistics
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int cargo = int.Parse(Console.ReadLine());
+            int vanCount = 0;
+            int truckCount = 0;
+            int trainCount = 0;
+            int price = 0;
+            int allTonnage = 0;
+
+            for (int i = 1; i <= cargo; i++)
+            {
+                int tonnage = int.Parse(Console.ReadLine());
+                allTonnage = allTonnage + tonnage;
+                if(tonnage<4)
+                {
+                    price = price + tonnage * 200;
+                    vanCount = vanCount + tonnage;
+                }
+                else if(tonnage<12) 
+                {
+                    price = price + tonnage * 175;
+                    truckCount = truckCount + tonnage;
+                }
+                else
+                {
+                    price = price + tonnage * 120;
+                    trainCount = trainCount + tonnage;
+                }
+            }
+            double vanPercentage = (double)vanCount / allTonnage * 100;
+            double trucPercentage = (double)truckCount / allTonnage * 100;
+            double trainPercentage = (double)trainCount / allTonnage * 100;
+            double averegePrice = (double)price / allTonnage;
+            Console.WriteLine($"{averegePrice:F2}");
+            Console.WriteLine($"{vanPercentage:F2}%");
+            Console.WriteLine($"{trucPercentage:F2}%");
+            Console.WriteLine($"{trainPercentage:F2}%");
+        }
+    }
+}

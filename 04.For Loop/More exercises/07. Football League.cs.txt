@@ -1,0 +1,44 @@
+using System;
+
+namespace _07._Football_League
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int stadumCapacity = int.Parse(Console.ReadLine());
+            int fans = int.Parse(Console.ReadLine());
+            int sectorAFans = 0;
+            int sectorBFans = 0;
+            int sectorVFans = 0;
+            int sectorGFans = 0;
+
+            for (int i = 1; i <= fans; i++)
+            {
+                string sector = Console.ReadLine();
+                switch (sector) 
+                {
+                    case "A": sectorAFans = sectorAFans + 1;
+                        break;
+                    case "B": sectorBFans = sectorBFans + 1;
+                        break;
+                    case "V": sectorVFans = sectorVFans + 1;
+                        break;
+                    case "G": sectorGFans = sectorGFans + 1;
+                        break;
+                }
+            }
+            double psectorAFans = (double)sectorAFans / fans*100;
+            double psectorBFans = (double)sectorBFans / fans*100;
+            double psectorVFans = (double)sectorVFans / fans*100;
+            double psectorGFans = (double)sectorGFans / fans*100;
+            double capacity = (double)fans / stadumCapacity*100;
+
+            Console.WriteLine($"{psectorAFans:F2}%");
+            Console.WriteLine($"{psectorBFans:F2}%");
+            Console.WriteLine($"{psectorVFans:F2}%");
+            Console.WriteLine($"{psectorGFans:F2}%");
+            Console.WriteLine($"{capacity:F2}%");
+        }
+    }
+}

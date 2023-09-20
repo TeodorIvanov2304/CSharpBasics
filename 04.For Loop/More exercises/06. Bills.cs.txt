@@ -1,0 +1,35 @@
+using System;
+
+namespace _06._Bills
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int months = int.Parse(Console.ReadLine());
+            double electricity = 0;
+            double electricBill = 0;
+            double internetBill = 0;
+            double waterBill = 0;
+            double otherBill = 0;
+
+            for (int i = 1; i <= months; i++)
+            {
+                electricity = double.Parse(Console.ReadLine());
+                electricBill = electricBill + electricity;
+                internetBill = internetBill + 15;
+                waterBill = waterBill + 20;
+                otherBill = otherBill + (electricity + 20 + 15)+((electricity + 20 + 15)*0.20);
+                
+
+            }
+            double averageBill = (electricBill + internetBill + waterBill + otherBill)/months;
+            Console.WriteLine($"Electricity: {electricBill:F2} lv");
+            Console.WriteLine($"Water: {waterBill:F2} lv");
+            Console.WriteLine($"Internet: {internetBill:F2} lv");
+            Console.WriteLine($"Other: {otherBill:F2} lv");
+            Console.WriteLine($"Average: {averageBill:F2} lv");
+
+        }
+    }
+}

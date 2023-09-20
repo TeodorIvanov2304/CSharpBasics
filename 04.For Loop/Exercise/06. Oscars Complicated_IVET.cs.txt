@@ -1,0 +1,46 @@
+using System;
+using System.Xml.Linq;
+
+namespace _06._Oscars_Complicated_IVET
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1. Четем вход от конзолата
+            // -> име на актьора - string
+            string actorName = Console.ReadLine();
+            // -> точки от академията - double 
+            double points = double.Parse(Console.ReadLine());
+            // -> брой оценяващи n - int
+            int n = int.Parse(Console.ReadLine());
+
+            string assessorName;
+            double assessorPoints;
+
+            //2. Създаваме цикъл, който да се изпълнява за всеки от журито
+            for (int i = 1; i <= n; i++)
+            {
+                //-> Четем от конзолата име на оценяващ и колко точки дава
+                assessorName = Console.ReadLine();
+                assessorPoints = double.Parse(Console.ReadLine());
+
+                // -> изчисляваме и добавяме точки към досегашните на актьора
+                // => дължината на името на оценяващия * точките които дава / 2
+
+                points += assessorName.Length * assessorPoints / 2;
+
+                // проверяваме дали точките са станали >= 1250.5
+                if(points>=1250.5)
+                {
+                    Console.WriteLine($"Congratulations, {actorName} got a nominee for leading role with {points:F1}!");
+                    break; // спираме изпълнението на цикъла
+                }
+            }
+            if(points<1250.5)
+            {
+                Console.WriteLine($"Sorry, {actorName} you need {1250.5 - points:F1} more!");
+            }
+        }
+    }
+}

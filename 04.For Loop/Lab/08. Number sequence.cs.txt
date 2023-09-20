@@ -1,0 +1,31 @@
+using System;
+
+namespace _08._Number_sequence
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Напишете програма, която чете n на брой цели числа. Принтирайте най-голямото и най-малкото число сред въведените.
+            int n = int.Parse(Console.ReadLine());
+            int maxNumber = int.MinValue; //даваме най-ниска стойност на МАКСИМАЛНАТА СТОЙНОСТ, за да може всяко следващо по-голямо да го замества
+            int minNumber = int.MaxValue;
+            for (int i = 0; i < n; i++)
+            {
+                int nextNumber = int.Parse(Console.ReadLine()); //докато върви цикъла <n се въвежда нов ред на конзолата / число
+                if (nextNumber > maxNumber)
+                //ако всяко следващо nextNumber е > от maxNumber, се презаписва стойността му в maxNumber 
+                {
+                    maxNumber = nextNumber;
+                }
+                if (nextNumber < minNumber)
+                //ако всяко следващо nextNumber е < от minNumber, се презаписва стойността му в minNumber 
+                {
+                    minNumber = nextNumber;
+                }
+            }
+            Console.WriteLine("Max number: " + maxNumber); // изхода се изкарва извън цикъла
+            Console.WriteLine("Min number: " + minNumber);
+        }
+    }
+}

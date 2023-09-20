@@ -1,0 +1,39 @@
+using System;
+
+namespace _09._Left_and_Right_Sum
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Да се напише програма, която чете 2*n-на брой цели числа, подадени от потребителя, и проверява дали сумата на първите n числа (лява сума) е равна на сумата на вторите n числа (дясна сума).
+            //При равенство печата " Yes, sum = " + сумата;
+            //иначе печата " No, diff = " + разликата.
+            //Разликата се изчислява като положително число (по абсолютна стойност). 
+            int n = int.Parse(Console.ReadLine());
+            int leftSum = 0;
+            int rightSum = 0;
+
+            // Правим 2 отделни for цикъла, за лявата и дясната сума , и двата с n цикли
+            for(int i = 0; i < n; i++)
+            {
+                int nextNumber = int.Parse(Console.ReadLine());
+                leftSum = leftSum + nextNumber;
+            }
+            for(int i = 0; i < n;i++) 
+            {
+                int nextNumber = int.Parse(Console.ReadLine());
+                rightSum = rightSum + nextNumber;
+            }
+            // След края на циклите сравняваме двете суми и изпечатваме съответния резултат
+            if(leftSum == rightSum)
+            {
+                Console.WriteLine("Yes, sum = " + leftSum);
+            }
+            else
+            {
+                Console.WriteLine("No, diff = " + (Math.Abs(leftSum-rightSum)));
+            }
+        }
+    }
+}

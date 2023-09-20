@@ -1,0 +1,51 @@
+using System;
+
+namespace _04._Grades
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int students = int.Parse(Console.ReadLine());
+            double topGrades = 0;
+            double goodGrades = 0;
+            double averageGrades = 0;
+            double lowGrades = 0;
+            double allGrades = 0;
+            double grade = 0;
+
+            for (int i = 1; i <= students; i++)
+            {
+                grade = double.Parse(Console.ReadLine());
+                allGrades += grade;
+
+                if(grade>=2.00&&grade<=2.99)
+                {
+                    lowGrades = lowGrades+1;
+                }
+                else if(grade>=3.00&&grade<=3.99)
+                {
+                    averageGrades = averageGrades + 1;
+                }
+                else if(grade>=4.00&&grade<=4.99)
+                {
+                    goodGrades = goodGrades +1;
+                }
+                else
+                {
+                    topGrades = topGrades + 1;
+                }
+            }
+            double percentageTopGrades = (double)topGrades/students*100;
+            double percentageGoodGrades = (double)goodGrades/ students * 100;
+            double percentageAverageGrades = (double)averageGrades/ students * 100;
+            double percentageLowGrades = (double)lowGrades/ students * 100;
+            double average = (double)allGrades / students;
+            Console.WriteLine($"Top students: {percentageTopGrades:F2}%");
+            Console.WriteLine($"Between 4.00 and 4.99: {percentageGoodGrades:F2}%");
+            Console.WriteLine($"Between 3.00 and 3.99: {percentageAverageGrades:F2}%");
+            Console.WriteLine($"Fail: {percentageLowGrades:F2}%");
+            Console.WriteLine($"Average: {average:F2}");
+        }
+    }
+}

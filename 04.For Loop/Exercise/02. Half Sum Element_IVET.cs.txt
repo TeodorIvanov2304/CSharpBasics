@@ -1,0 +1,49 @@
+using System;
+
+namespace _02._Half_Sum_Element__2_
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // 1. Четем n от конзолата
+            int n = int.Parse(Console.ReadLine());
+            int num;
+            int maxNum = int.MinValue;
+            int sum = 0;
+            // 2. Пускаме цикъл for който се изпълнява n на брой пъти
+            for(int i = 1; i <= n; i++) 
+            {
+                //-> четем число от конзолата
+                num = int.Parse(Console.ReadLine());
+                //->проверяваме, дали е най-голямото въведено до момента
+
+                if(num>maxNum)
+                {
+                    //-> ако е, то става най-голямото число
+                    //->добавяме го към сумата на всички числа
+                    maxNum = num;
+                }
+                sum += num;
+            }
+
+            // 3. От сумата на всички числа изваждаме най-голямото
+            sum = sum - maxNum;
+
+            // 4. Проверяваме дали най-голямото число = сумата на всички останали
+            if(sum==maxNum)
+            {
+                //-> ако е равно отпечатваме "Yes" и на нов ред "Sum = "  + неговата стойност
+                Console.WriteLine("Yes");
+                Console.WriteLine($"Sum = {maxNum}");
+            }
+            else
+            {
+                Console.WriteLine("No");
+                Console.WriteLine($"Diff = {Math.Abs(maxNum-sum)}");
+            }
+            
+            //-> ако не е, отпечатваме "No" и на нов ред "Diff = " + разликата между най-големия елемент и сумата на останалите (по абсолютна стойност)
+        }
+    }
+}

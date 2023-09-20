@@ -1,0 +1,56 @@
+using System;
+
+namespace _05._Salary
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // 1. Четем вход от конзолата: брой отворени табове и заплата
+            int tabs = int.Parse(Console.ReadLine());
+            int salary = int.Parse(Console.ReadLine());
+
+            // 2. Създаваме цикъл, който да се изпълнява за всеки отворен таб
+            for(int tab = 1;tab<= tabs; tab++) 
+            {
+                //-> четем име на сайт, отворен на съответния таб
+                string site = Console.ReadLine();
+
+                // Проверяваме дали е:
+                //-> "Facebook" - глоба 150 лв.
+                //-> "Reddit" - 50 лв.
+                //-> "Instagram" - 100 лв. 
+
+                if (site=="Facebook")
+                {
+                    salary = salary - 150;
+                    //salary-=150;
+                }
+                else if(site== "Instagram")
+                {
+                    salary = salary - 100;
+                    //salary-=100;
+                }
+                else if(site=="Reddit")
+                {
+                    salary = salary - 50;
+                    //salary-=50;
+                }
+                // Проверяваме дали заплатата <=0
+                // -> ако е : отпечатваме "You have lost your salary." 
+                // -> спираме цикъла
+                if (salary<=0)
+                {
+                    Console.WriteLine("You have lost your salary.");
+                    break;
+                }
+            }
+            // 3. Проверяваме дали е останала заплата, ако е :
+            // -> остатъкът заплата
+            if (salary>0)
+            {
+                Console.WriteLine(salary);
+            }
+        }
+    }
+}

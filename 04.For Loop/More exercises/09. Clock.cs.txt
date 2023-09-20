@@ -1,0 +1,20 @@
+using System;
+
+namespace _09._Clock
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 0; i <= 23; i++)
+            {
+                //Console.WriteLine($"{i:D2}");
+                for (int j = 0; j <= 59; j++)
+                {
+                    Console.WriteLine($"{i} : {j}"); 
+                    // Незнайно защо програмата визуализира часовете само след 19 нататък, но очевидно работи?
+                }
+            }
+        }
+    }
+}
