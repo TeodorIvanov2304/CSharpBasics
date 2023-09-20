@@ -1,0 +1,19 @@
+using System;
+
+namespace CelsiusToFahrenheit
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double vegetablePerKilo = double.Parse(Console.ReadLine());
+            double fruitPerKilo = double.Parse(Console.ReadLine());
+            int vegetableKilos = int.Parse(Console.ReadLine());
+            int fruitKilos = int.Parse(Console.ReadLine());
+
+            double income = (vegetablePerKilo * vegetableKilos) + (fruitPerKilo * fruitKilos);
+            double incomeEuro = income / 1.94;
+            Console.WriteLine($"{incomeEuro:F2}");
+        }
+    }
+}

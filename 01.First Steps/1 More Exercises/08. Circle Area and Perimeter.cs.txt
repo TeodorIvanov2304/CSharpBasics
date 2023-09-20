@@ -1,0 +1,27 @@
+using System;
+using System.Threading;
+
+namespace CelsiusToFahrenheit
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+
+           //1. Четем радиуса от конзолата 
+            double radius = double.Parse(Console.ReadLine());
+
+            //2. Пресмятаме площта по форумлата а = pi r2
+            double area = Math.PI * (radius*radius);
+
+            //3. Пресмятаме периметъра по формулата P = 2 pi r
+            double perimeter = 2 * Math.PI * radius;
+
+            //4. Изпечатваме резултатите на конзолата
+            Console.WriteLine($"{area:F2}");
+            Console.WriteLine($"{perimeter:F2}");
+
+        }
+    }
+}

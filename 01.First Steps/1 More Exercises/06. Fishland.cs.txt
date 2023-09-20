@@ -1,0 +1,25 @@
+using System;
+using System.Threading;
+
+namespace CelsiusToFahrenheit
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            float mackerel = float.Parse(Console.ReadLine());
+            float sprat = float.Parse(Console.ReadLine());
+            float beltedBonitoKilos = float.Parse(Console.ReadLine());
+            float scadKilos = float.Parse(Console.ReadLine());
+            int musselsKilos = int.Parse(Console.ReadLine());
+
+            double beltedBonitoPrice = mackerel + (mackerel * 0.60);
+            double scadPrice = sprat + (sprat * 0.80);
+            double musselPrice = 7.50; 
+            double finalPrice = (beltedBonitoPrice * beltedBonitoKilos) + (scadPrice * scadKilos) + (musselPrice * musselsKilos);
+
+            Console.WriteLine($"{finalPrice:F2}");
+
+        }
+    }
+}

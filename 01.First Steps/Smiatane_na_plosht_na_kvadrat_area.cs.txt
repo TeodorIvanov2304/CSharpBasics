@@ -1,0 +1,18 @@
+using System;
+
+namespace FirstStepsinCoding_22_04_2023
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please enter a variable: ");
+            int a = int.Parse(Console.ReadLine());
+            int area = a * a;
+
+            Console.WriteLine("Thea area is " + (area));
+            
+
+        }
+    }
+}

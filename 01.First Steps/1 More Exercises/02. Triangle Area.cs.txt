@@ -1,0 +1,23 @@
+using System;
+
+namespace TriangleArea
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Напишете програма, която чете от конзолата страна и височина на триъгълник
+            // и пресмята неговото лице. Използвайте формулата за лице на триъгълник:
+            // area = a * h / 2. Форматирате изхода до втория знак след десетичната запетая.
+
+            //1. Четем от конзолата страната и височината на триъгълника
+            double a = double.Parse(Console.ReadLine());
+            double h = double.Parse(Console.ReadLine());
+
+            //2. Пресмятаме лицето на триъгълника
+            double area = a * h / 2;
+            Console.WriteLine("{0:0.00}",area);
+
+        }
+    }
+}
