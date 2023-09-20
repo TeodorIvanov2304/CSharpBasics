@@ -1,0 +1,96 @@
+using System;
+
+namespace _03._New_House
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string flowerType = Console.ReadLine(); // "Roses", "Dahlias", "Tulips", "Narcissus", "Gladiolus"
+            int count = int.Parse(Console.ReadLine()); // брой на цветята
+            int budget = int.Parse(Console.ReadLine()); // предвиден бюджет
+
+            //1 Крайна цена = бр. цветята (count) * цената за едно цвете
+
+            double priceOfFlower = 0; // цената за едно цвете зависи от типа на цвеетето
+            // flowerType -> серия от проверки за точни стойности
+            // Roses = 5
+            // Dahlias = 3.80
+            // Tulips = 2.80
+            // Narcissus = 3
+            // Gladiolus = 2.50
+
+            switch(flowerType)
+            {
+                case "Roses":
+                    priceOfFlower = 5.0;
+                    break;
+                case "Dahlias":
+                    priceOfFlower = 3.80;
+                    break;
+                case "Tulips":
+                    priceOfFlower = 2.80;
+                    break;
+                case "Narcissus":
+                    priceOfFlower = 3.0;
+                    break;
+                case "Gladiolus":
+                    priceOfFlower = 2.50;
+                    break;
+            }
+            double totalPrice = count * priceOfFlower; // крайна цена
+
+            //2 Отстъпки
+            // повече от 80 рози -> 10% отстъпка
+
+            if (count > 80 && flowerType == "Roses")
+            {
+                totalPrice = totalPrice - (totalPrice * 0.10);
+                // totalPrice = 0.9 * totalPrice == горния израз друго изписване
+                // totalPrice *=0.9; още по-съкратено записване
+            }
+            // повече от 90 далии -15% отстъпка
+            else if (count > 90 && flowerType == "Dahlias")
+            {
+                totalPrice = totalPrice - (totalPrice * 0.15);
+                // totalPrice = 0.85 * totalPrice;
+                // totalPrice *= 0.85;
+
+            }
+            // повече от 80 Лалета - 15% отстъпка 
+            else if (count > 80 && flowerType== "Tulips")
+            {
+                totalPrice = totalPrice - (totalPrice * 0.15);
+            }
+            // по-малко от 120 Нарциса + 15% по-скъпо
+            else if(count <120&&flowerType== "Narcissus")
+            {
+                totalPrice = totalPrice + 0.15 * totalPrice;
+                // totalPrice = 1.15 * totalPrice;
+                // totalPrice*=1.15
+            }
+            // по - малко от 80 Гладиоли цената се оскъпява с 20%
+            else if (count<80&&flowerType== "Gladiolus")
+            {
+                totalPrice = totalPrice + (totalPrice * 0.20);
+                // totalPrice = totalPrice + 0.20 * totalPrice;
+                //totalPrice = 1.20 * totalPrice;
+                // totalPrice *=1.20;
+            }
+            // Проверка за бюджет
+            // крайна сума : totalPrice
+            // предвиден бюджет : budget
+
+            // достатъчен
+            if(budget>=totalPrice)
+            {
+                Console.WriteLine($"Hey, you have a great garden with {count} {flowerType} and {budget-totalPrice:F2} leva left.");
+            }
+            // недостатъчен
+            else
+            {
+                Console.WriteLine($"Not enough money, you need {totalPrice-budget:F2} leva more.");
+            }
+        }
+    }
+}

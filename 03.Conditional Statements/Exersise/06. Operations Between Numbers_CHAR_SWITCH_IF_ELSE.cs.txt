@@ -1,0 +1,94 @@
+using System;
+
+namespace _06._Operations_Between_Numbers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Напишете програма, която чете две цели числа(N1 и N2) и оператор, с който да се извърши дадена математическа операция с тях.Възможните операции са: Събиране(+), Изваждане(-), Умножение(*), Деление(/) и Модулно деление(%).При събиране, изваждане и умножение на конзолата трябва да се отпечатат резултата и дали той е четен или нечетен.При обикновеното деление – резултата.При модулното деление – остатъка.Трябва да се има предвид, че делителят може да е равен на 0(нула), а на нула не се дели. В този случай трябва да се отпечата специално съобщениe.
+            //Вход
+            //От конзолата се прочитат 3 реда, въведени от потребителя:
+            //•	N1 – цяло число в интервала[0...40 000]
+            //•	N2 – цяло число в интервала[0...40 000]
+            //•	Оператор – един символ измежду: „+“, „-“, „*“, „/“, „%“
+            // 1 Четем 3-те реда от конзолата
+            int num1 = int.Parse(Console.ReadLine());
+            int num2 = int.Parse(Console.ReadLine());
+            char op = Console.ReadLine()[0];
+            double result = 0;
+            if (num2 == 0)
+            {
+                Console.WriteLine($"Cannot divide {num1} by zero");
+            }
+            else
+            {
+                switch (op)
+                {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        result = num1*1.0 / num2; // умножаваме по 1.0 за да може поне едното от двете числа (num1/num2) да стане дробно. Това е много важно!!! 
+                        // НИКОГА НЕ СЕ ДЕЛИ НА 0
+                        // ДЕЛЕНИЕ НА 2 ЦЕЛИ ЧИСЛА ВИНАГИ ДАВА ЦЯЛО ЧИСЛО!!! ЗА ТОВА СЕ УМНОЖАВА ПО 1.0!!!
+                        break;
+                    case '%':
+                        result = num1 % num2;
+                        break;
+                }
+                if (op == '+')
+                {
+                    double oddOrEven = result % 2;
+                    if (oddOrEven == 0)
+                    {
+                        Console.WriteLine($"{num1} + {num2} = {result} - even");
+                    }
+                    if (oddOrEven != 0)
+                    {
+                        Console.WriteLine($"{num1} + {num2} = {result} - odd");
+                    }
+                }
+                else if (op == '-')
+                {
+                    double oddOrEven = result % 2;
+                    if (oddOrEven == 0)
+                    {
+                        Console.WriteLine($"{num1} - {num2} = {result} - even");
+                    }
+                    if (oddOrEven != 0)
+                    {
+                        Console.WriteLine($"{num1} - {num2} = {result} - odd");
+                    }
+                }
+                else if (op == '*')
+                {
+                    double oddOrEven = result % 2;
+                    if (oddOrEven == 0)
+                    {
+                        Console.WriteLine($"{num1} * {num2} = {result} - even");
+                    }
+                    if (oddOrEven != 0)
+                    {
+                        Console.WriteLine($"{num1} * {num2} = {result} - odd");
+                    }
+                }
+                else if (op == '/')
+                {
+                    Console.WriteLine($"{num1} / {num2} = {result:F2}");
+                }
+                else if (op == '%')
+                {
+                    Console.WriteLine($"{num1} % {num2} = {result}");
+                }
+            }
+            
+        }
+    }
+}

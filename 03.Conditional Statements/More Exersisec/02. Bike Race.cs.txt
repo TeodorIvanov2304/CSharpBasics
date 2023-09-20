@@ -1,0 +1,74 @@
+using System;
+
+namespace _02._Bike_Race
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Предстои Вело състезание за благотворителност в което участниците са разпределени
+            // в младша("juniors") и старша("seniors") група.Парите се набавят от таксата за участие
+            // на велосипедистите.Според възрастовата група и вида на трасето на което ще се провежда
+            //
+            // състезанието, таксата е различна.
+            //Група trail   cross - country   downhill road
+            //juniors 5.50    8   12.25   20
+            //seniors 7   9.50    13.75   21.50
+
+            //Ако в "cross-country" състезанието се съберат 50 или
+            //повече участника(общо младши и старши), таксата намалява с 25 %.
+            //Организаторите отделят 5 % процента от събраната сума за разходи.
+
+
+            //От конзолата се четат 2 числа и един стринг, всяко на отделен ред:
+            //•	Първият ред – броят младши велосипедисти.Цяло число в интервала[1…100]
+            //•	Вторият ред – броят старши велосипедисти.Цяло число в интервала[1… 100]
+            //•	Третият ред – вид трасе – "trail", "cross-country", "downhill" или "road"
+            //Изход
+            //Да се отпечата на конзолата едно число:
+            //"{дарената сума}" - форматирана с точност до 2 знака след десетичната запетая.
+
+            //1. Четем трите реда то конзолата
+            int juniotCyclist = int.Parse(Console.ReadLine());
+            int seniorCyclist = int.Parse(Console.ReadLine());
+            string track = Console.ReadLine();
+
+
+            if (track == "trail")
+            {
+                double tax = (juniotCyclist * 5.50) + (seniorCyclist * 7);
+                tax = tax - (tax * 0.05);
+                Console.WriteLine($"{tax:F2}");
+            }
+            else if (track == "cross-country")
+            {
+                if (juniotCyclist + seniorCyclist >= 50)
+                {
+                    double tax = (juniotCyclist * (8.0 - (8.0 * 0.25))) + (seniorCyclist * (9.50 - (9.50 * 0.25)));
+                    tax = tax - (tax * 0.05);
+                    Console.WriteLine($"{tax:F2}");
+                }
+                else
+                {
+                    double tax = (juniotCyclist * 8.0) + (seniorCyclist * 9.50);
+                    tax = tax - (tax * 0.05);
+                    Console.WriteLine($"{tax:F2}");
+                }
+
+
+            }
+            else if (track == "downhill") 
+            {
+                double tax = (juniotCyclist * 12.25) + (seniorCyclist * 13.75);
+                tax = tax - (tax * 0.05);
+                Console.WriteLine($"{tax:F2}");
+            }
+            else
+            {
+                double tax = (juniotCyclist * 20.0) + (seniorCyclist * 21.50);
+                tax = tax - (tax * 0.05);
+                Console.WriteLine($"{tax:F2}");
+            }
+        }
+    }
+}

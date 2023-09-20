@@ -1,0 +1,139 @@
+using System;
+
+namespace _03._Flowers
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1. Входът се чете от конзолата и съдържа точно 5 реда:
+            //	На първия ред е броят на закупените хризантеми – цяло число в интервала[0... 200]
+            //	На втория ред е броят на закупените рози – цяло число в интервала[0... 200]
+            //	На третия ред е броят на закупените лалета – цяло число в интервала[0... 200]
+            //	На четвъртия ред е посочен сезона – [Spring, Summer, Аutumn, Winter]
+            //	На петия ред е посочено дали денят е празник – [Y – да / N - не]
+            //
+            int chrysanthemum = int.Parse(Console.ReadLine());
+            int roses = int.Parse(Console.ReadLine());
+            int tulips = int.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+            char holiday = Console.ReadLine()[0];
+
+            bool cheapSeason = season == "Spring" || season== "Summer";
+            bool isHoliday = holiday == 'Y';
+
+            if(cheapSeason)
+            {
+                double chrysanthemumPrice = chrysanthemum * 2.0;
+                double rosesPrice = roses * 4.10;
+                double tulipsPrice = tulips * 2.50;
+                double flowersPrice = chrysanthemumPrice + rosesPrice + tulipsPrice;
+
+                if (isHoliday)
+                {
+                    flowersPrice = flowersPrice + (flowersPrice * 0.15);
+
+                    if(tulips>7&& chrysanthemum + roses + tulips<=20 && season == "Spring") // Тук за малко да объркам, заради булевата
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.05)+2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                    else if(tulips>7&& chrysanthemum + roses + tulips > 20 && season == "Spring")
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.05);
+                        flowersPrice = flowersPrice - (flowersPrice * 0.20)+2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                    else if(tulips<=7&& chrysanthemum + roses + tulips <= 20)
+                    {
+                        Console.WriteLine($"{flowersPrice + 2.0:F2}");
+                    }
+                    else
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.20) + 2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                }
+                else
+                {
+                    if (tulips > 7 && chrysanthemum + roses + tulips <= 20 && season == "Spring")
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.05) + 2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                    else if (tulips > 7 && chrysanthemum + roses + tulips > 20 && season == "Spring")
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.05);
+                        flowersPrice = flowersPrice - (flowersPrice * 0.20) + 2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                    else if (tulips <= 7 && chrysanthemum + roses + tulips <= 20)
+                    {
+                        Console.WriteLine($"{flowersPrice + 2.0:F2}");
+                    }
+                    else
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.20) + 2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                }
+            }
+            else
+            {
+                double chrysanthemumPrice = chrysanthemum * 3.75;
+                double rosesPrice = roses * 4.50;
+                double tulipsPrice = tulips * 4.15;
+                double flowersPrice = chrysanthemumPrice + rosesPrice + tulipsPrice;
+
+                if (isHoliday)
+                {
+                    flowersPrice = flowersPrice + (flowersPrice * 0.15);
+
+                    if (roses >= 10 && chrysanthemum + roses + tulips <= 20&&season=="Winter")
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.10) + 2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                    else if (roses >=10 && chrysanthemum + roses + tulips > 20 && season == "Winter")
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.10);
+                        flowersPrice = flowersPrice - (flowersPrice * 0.20) + 2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                    else if (roses <= 10 && chrysanthemum + roses + tulips <= 20)
+                    {
+                        Console.WriteLine($"{flowersPrice + 2.0:F2}");
+                    }
+                    else
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.20) + 2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                }
+                else
+                {
+                    if (roses >= 10 && chrysanthemum + roses + tulips <= 20&&season=="Winter")
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.10) + 2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                    else if (roses >=10 && chrysanthemum + roses + tulips > 20&&season=="Winter")
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.10);
+                        flowersPrice = flowersPrice - (flowersPrice * 0.20) + 2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                    else if (roses < 10 && chrysanthemum + roses + tulips <= 20)
+                    {
+                        Console.WriteLine($"{flowersPrice + 2.0:F2}");
+                    }
+                    else
+                    {
+                        flowersPrice = flowersPrice - (flowersPrice * 0.20)+2.0;
+                        Console.WriteLine($"{flowersPrice:F2}");
+                    }
+                }
+            }
+        }
+    }
+}

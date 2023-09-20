@@ -1,0 +1,73 @@
+using System;
+
+namespace _07._Hotel_Room
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string month = Console.ReadLine();
+            int nights = int.Parse(Console.ReadLine());
+            double studioPerNihght = 0;
+            double apartmentPerNight = 0;
+
+            if(month=="May"||month=="October")
+            {
+                studioPerNihght = nights * 50.0;
+                apartmentPerNight = nights * 65.0;
+                if(nights>7&&nights<14)
+                {
+                    studioPerNihght = studioPerNihght - 0.05 * studioPerNihght;
+                    Console.WriteLine($"Apartment: {apartmentPerNight:F2} lv.");
+                    Console.WriteLine($"Studio: {studioPerNihght:F2} lv.");
+                }
+                else if(nights>14)
+                {
+                    studioPerNihght = studioPerNihght - 0.30 * studioPerNihght;
+                    apartmentPerNight = apartmentPerNight - 0.10 * apartmentPerNight;
+                    Console.WriteLine($"Apartment: {apartmentPerNight:F2} lv.");
+                    Console.WriteLine($"Studio: {studioPerNihght:F2} lv.");
+                }
+                else
+                {
+                    Console.WriteLine($"Apartment: {apartmentPerNight:F2} lv.");
+                    Console.WriteLine($"Studio: {studioPerNihght:F2} lv.");
+                }
+            }
+            else if(month=="June"||month=="September")
+            {
+                studioPerNihght = nights * 75.20;
+                apartmentPerNight = nights * 68.70;
+                if(nights>14)
+                {
+                    studioPerNihght = studioPerNihght - 0.20 * studioPerNihght;
+                    apartmentPerNight = apartmentPerNight - 0.10 * apartmentPerNight;
+                    Console.WriteLine($"Apartment: {apartmentPerNight:F2} lv.");
+                    Console.WriteLine($"Studio: {studioPerNihght:F2} lv.");
+                }
+                else
+                {
+                    Console.WriteLine($"Apartment: {apartmentPerNight:F2} lv.");
+                    Console.WriteLine($"Studio: {studioPerNihght:F2} lv.");
+                }
+            }
+            else if(month=="July"||month=="August")
+            {
+                studioPerNihght = nights * 76.0;
+                apartmentPerNight = nights * 77.0;
+                if (nights>14)
+                {
+                    apartmentPerNight = apartmentPerNight - 0.10 * apartmentPerNight;
+                    Console.WriteLine($"Apartment: {apartmentPerNight:F2} lv.");
+                    Console.WriteLine($"Studio: {studioPerNihght:F2} lv.");
+                }
+                else
+                {
+                    Console.WriteLine($"Apartment: {apartmentPerNight:F2} lv.");
+                    Console.WriteLine($"Studio: {studioPerNihght:F2} lv.");
+                }
+            }
+
+        }
+    }
+}

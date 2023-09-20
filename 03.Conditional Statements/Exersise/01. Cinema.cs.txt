@@ -1,0 +1,40 @@
+using System;
+
+namespace _01._Cinema
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //1 Общ брой на местата в киносалона
+
+            string type = Console.ReadLine();
+            int rows = int.Parse(Console.ReadLine());
+            int columns = int.Parse(Console.ReadLine());
+
+            //2 Приход = бр. места * цената на билета
+            int countTickets = rows * columns;
+            //Type -> серия от точни проверки (switch), ако е за по-голямо или равно е по-удобно IF
+            // Permiere -> 12
+            // Normal -> 7.5
+            // Discount -> 5
+            double priceOfTicket = 0.0;
+
+            switch(type)
+            {
+                case "Premiere":
+                        priceOfTicket = 12.0;
+                    break;
+                case "Normal":
+                    priceOfTicket = 7.5;
+                    break;
+                case "Discount":
+                    priceOfTicket = 5.0;
+                    break;
+            }
+            double profit = countTickets*priceOfTicket;
+            Console.WriteLine($"{profit:F2}");
+
+        }
+    }
+}

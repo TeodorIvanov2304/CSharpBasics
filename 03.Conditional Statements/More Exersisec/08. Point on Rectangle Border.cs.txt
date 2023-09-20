@@ -1,0 +1,50 @@
+using System;
+
+namespace _08._Point_on_Rectangle_Border
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Напишете програма, която проверява дали точка { x, y}
+            //се намира върху някоя от страните на правоъгълник { x1, y1} – { x2, y2}.
+            //Входните данни се четат от конзолата и се състоят от 6 реда въведени от потребителя:
+            //десетичните числа x1, y1, x2, y2, x и y(като се гарантира, че x1 < x2 и y1 < y2).
+            //Да се отпечата "Border"(точката лежи на някоя от страните)
+            //или "Inside / Outside"(в противен случай).
+
+            double x1 = double.Parse(Console.ReadLine());
+            double y1 = double.Parse(Console.ReadLine());
+            double x2 = double.Parse(Console.ReadLine());
+            double y2 = double.Parse(Console.ReadLine());
+            double x = double.Parse(Console.ReadLine());
+            double y = double.Parse(Console.ReadLine());
+
+            bool onLeftSide = (x == x1) && (y >= y1) && (y <= y2); // дали х и у лежат на лявата граница на праволъгълнка
+            bool onRightSide = (x == x2) && (y >= y1) && (y <= y2);// дали х и у лежат на дясната граница на праволъгълнка
+            bool onUpSide = (y == y1) && (x >= x1) && (x <= x2); // дали х и у лежат на горната граница на праволъгълнка
+            bool onDownSide = (y == y2) && (x >= x1) && (x <= x2); // дали х и у лежат на долната граница на праволъгълнка
+
+            bool inside = (x > x1 && x < x2) && (y < y1 && y < y2); // дали х и у лежат вътре в правоъгълника
+
+            bool outside = ((x <= x1) || (x >= x2)) || ((y >= y1) || (y >= y2)); // дали х и у лежат извън правоъгълника
+
+            if (x1 < x2 && y1 < y2)
+            {
+                if (onLeftSide || onRightSide || onUpSide || onDownSide)
+                {
+                    Console.WriteLine("Border");
+                }
+                else if (inside || outside)
+                {
+                    Console.WriteLine("Inside / Outside");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Error");
+            }
+        }
+    }
+}

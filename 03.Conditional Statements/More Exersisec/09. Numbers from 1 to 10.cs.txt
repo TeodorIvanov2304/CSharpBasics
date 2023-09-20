@@ -1,0 +1,21 @@
+using System;
+
+namespace _09._Numbers_from_1_to_10
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            // Напишете програма, която отпечатва числата от 1 до 10, по едно на ред.
+
+            int i = 1;   // ако обявим i=0, първото число ще е 0
+
+            while(i<11) // поставяме условие i да е по-малко от 11, ако е равно на 1, за да изброи числата от 1 до 10
+            {
+                Console.WriteLine(i);
+                i++;
+            }
+        }
+    }
+}

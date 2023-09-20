@@ -1,0 +1,97 @@
+using System;
+
+namespace _04._Car_To_Go
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Напишете програма, която спрямо даден бюджет и сезон да пресмята цената,
+            // типа и класа на кола под наем.
+            // Сезоните са лято и зима – "Summer" и "Winter".
+
+            // Типа коли са кабрио и джип – "Cabrio" и "Jeep".
+
+            //	При бюджет по - малък или равен от 100лв.:
+            // Класът ще е -"Economy class"
+            // Според сезона колата и цената ще са:
+            //	Лято – Кабрио – 35 % от бюджета
+            //	Зима – Джип – 65 % от бюджета
+            //	При бюджет по - голям от 100лв.и по-малък или равен от 500лв.:
+            // Класът ще е -"Compact class"
+            // Според сезона колата и цената ще са:
+            //	Лято – Кабрио – 45 % от бюджета
+            //	Зима – Джип – 80 % от бюджета
+            //	При бюджет по - голям от 500лв.:
+            // Класът ще е – "Luxury class"
+            // За всеки сезон колата ще е джип и цената ще е:
+            //	90 % от бюджета
+
+            //  Входът се чете от конзолата и се състои от два реда:
+            //  Първи ред – Бюджет – реално число в интервала[10.00...10000.00]
+            //  Втори ред –  Сезон – текст "Summer" или "Winter"
+            //  
+
+            //1. Четем входа от конзолата
+            double budget = double.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+
+            bool isSummer = season == "Summer";
+            
+            if(isSummer)
+            {
+                if(budget<=100)
+                {
+                    string carClass = "Economy class";
+                    string carType = "Cabrio";
+                    double carPrice = budget * 0.35;
+                    Console.WriteLine($"{carClass}");
+                    Console.WriteLine($"{carType} - {carPrice:F2}");
+                }
+                else if(budget>100&&budget<=500)
+                {
+                    string carClass = "Compact class";
+                    string carType = "Cabrio";
+                    double carPrice = budget * 0.45;
+                    Console.WriteLine($"{carClass}");
+                    Console.WriteLine($"{carType} - {carPrice:F2}");
+                }
+                else
+                {
+                    string carClass = "Luxury class";
+                    string carType = "Jeep";
+                    double carPrice = budget * 0.90;
+                    Console.WriteLine($"{carClass}");
+                    Console.WriteLine($"{carType} - {carPrice:F2}");
+                }
+            }
+            else
+            {
+                if (budget <= 100)
+                {
+                    string carClass = "Economy class";
+                    string carType = "Jeep";
+                    double carPrice = budget * 0.65;
+                    Console.WriteLine($"{carClass}");
+                    Console.WriteLine($"{carType} - {carPrice:F2}");
+                }
+                else if (budget > 100 && budget <= 500)
+                {
+                    string carClass = "Compact class";
+                    string carType = "Jeep";
+                    double carPrice = budget * 0.80;
+                    Console.WriteLine($"{carClass}");
+                    Console.WriteLine($"{carType} - {carPrice:F2}");
+                }
+                else
+                {
+                    string carClass = "Luxury class";
+                    string carType = "Jeep";
+                    double carPrice = budget * 0.90;
+                    Console.WriteLine($"{carClass}");
+                    Console.WriteLine($"{carType} - {carPrice:F2}");
+                }
+            }
+        }
+    }
+}

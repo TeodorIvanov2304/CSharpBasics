@@ -1,0 +1,90 @@
+using System;
+using System.Data;
+
+namespace _04._Fishing_Boat
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Тони и приятели много обичали да ходят за риба, те са толкова запалени по риболова,
+            //че решават да отидат на риболов с кораб.Цената за наема на кораба зависи от сезона и броя рибари.
+            //Цената зависи от сезона:
+            //•	Цената за наем на кораба през пролетта е  3000 лв.
+            //•	Цената за наем на кораба през лятото и есента е  4200 лв.
+            //•	Цената за наем на кораба през зимата е  2600 лв.
+
+            //В зависимост от броя си групата ползва отстъпка:
+            //•	Ако групата е до 6 човека включително  –  отстъпка от 10 %.
+            //•	Ако групата е от 7 до 11 човека включително  –  отстъпка от 15 %.
+            //•	Ако групата е от 12 нагоре  –  отстъпка от 25 %.
+
+            //Рибарите ползват допълнително 5 % отстъпка, ако са четен брой освен ако не е есен - тогава нямат допълнителна отстъпка, която се начислява след като се приспадне отстъпката по горните критерии.
+
+            //Напишете програма, която да пресмята дали рибарите ще съберат достатъчно пари. 
+            //Вход
+            //От конзолата се четат точно три реда.
+            //•	Бюджет на групата – цяло число в интервала[1…8000]
+            //•	Сезон –  текст: "Spring", "Summer", "Autumn", "Winter"
+            //•	Брой рибари – цяло число в интервала[4…18]
+
+            //1 Четем трите реда от конзолата
+            int budget = int.Parse(Console.ReadLine());
+            string season = Console.ReadLine();
+            int fishermans = int.Parse(Console.ReadLine());
+
+            double boatPrice = 0;
+
+            switch (season)
+            {
+                case "Spring":
+                    boatPrice = 3000.0;
+                    break;
+                case "Summer":
+                    boatPrice = 4200.0;
+                    break;
+                case "Autumn":
+                    boatPrice = 4200.0;
+                    break;
+                case "Winter":
+                    boatPrice = 2600.0;
+                    break;
+            }
+            if (fishermans <= 6)
+            {
+                boatPrice = boatPrice - (boatPrice * 0.10);
+                if (fishermans % 2 == 0&&season!="Autumn")
+                {
+                    boatPrice = boatPrice - (boatPrice * 0.05);
+                }
+            }
+            else if (fishermans >= 7 && fishermans <= 11)
+            {
+                boatPrice = boatPrice - (boatPrice * 0.15);
+                if (fishermans % 2 == 0 && season != "Autumn")
+                {
+                    boatPrice = boatPrice - (boatPrice * 0.05);
+                }
+            }
+            else
+            {
+                boatPrice = boatPrice - (boatPrice * 0.25);
+                if (fishermans % 2 == 0 && season != "Autumn")
+                {
+                    boatPrice = boatPrice - (boatPrice * 0.05);
+                }
+            }
+            if (budget >= boatPrice)
+            {
+                double moneyLeft = budget - boatPrice;
+                Console.WriteLine($"Yes! You have {moneyLeft:F2} leva left.");
+            }
+            else
+            {
+                double moneyNeeded = boatPrice - budget;
+                Console.WriteLine($"Not enough money! You need {moneyNeeded:F2} leva.");
+            }
+
+        }
+    }
+}

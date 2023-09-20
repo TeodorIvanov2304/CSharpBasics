@@ -1,0 +1,187 @@
+using System;
+
+namespace Conditional_Statements_Advanced___More_Exercises
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Когато пуснали билетите за Евро 2016, група запалянковци решили да си закупят.
+            // Билетите имат две категории с различни цени:
+
+            //•	VIP – 499.99 лева.
+            //•	Normal – 249.99 лева.
+
+            //Запалянковците имат определен бюджет, а броят на хората в групата определя какъв процент
+            //от бюджета трябва да се задели за транспорт
+           
+            //От 1 до 4 – 75 % от бюджета.
+            //•	От 5 до 9 – 60 % от бюджета.
+            //•	От 10 до 24 – 50 % от бюджета.
+            //•	От 25 до 49 – 40 % от бюджета.
+            //•	50 или повече – 25 % от бюджета.
+            //Напишете програма, която да пресмята дали с останалите пари от бюджета могат да си купят
+            //билети за избраната категория. И колко пари ще им останат или ще са им нужни.
+
+            // 1 Входът се чете от конзолата и съдържа точно 3 реда:
+            //•	На първия ред е бюджетът – реално число в интервала[1 000.00... 1 000 000.00]
+            //•	На втория ред е категорията – "VIP" или "Normal"
+            //•	На третия ред е броят на хората в групата – цяло число в интервала[1... 200]
+            double budget = double.Parse(Console.ReadLine());
+            string category = Console.ReadLine();
+            int fans = int.Parse(Console.ReadLine());
+
+            bool isVIP = category == "VIP";
+
+            if(isVIP)
+            {
+                if(fans>0&&fans<5)
+                {
+                    double transport =  budget * 0.75;
+                    double finalBudget = 499.99 * fans + transport; 
+
+                    if (budget>=finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget-finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget-budget:F2} leva.");
+                    }
+                    
+                }
+                else if(fans>=5&&fans<=9)
+                {
+                    double transport = budget * 0.60;
+                    double finalBudget = 499.99 * fans + transport;
+
+                    if(budget>=finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget - finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget - budget:F2} leva.");
+                    }
+                }
+                else if(fans>=10&&fans<=24)
+                {
+                    double transport = budget * 0.50;
+                    double finalBudget = 499.99 * fans + transport;
+
+                    if(budget>=finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget - finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget - budget:F2} leva.");
+                    }
+                }
+                else if(fans>=25&&fans<=49)
+                {
+                    double transport = budget * 0.40;
+                    double finalBudget = 499.99 * fans + transport;
+
+                    if (budget >= finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget - finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget - budget:F2} leva.");
+                    }
+                }
+                else
+                {
+                    double transport = budget * 0.25;
+                    double finalBudget = 499.99 * fans + transport;
+
+                    if (budget >= finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget - finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget - budget:F2} leva.");
+                    }
+                }
+
+            }
+            else
+            {
+                if (fans > 0 && fans < 5)
+                {
+                    double transport = budget * 0.75;
+                    double finalBudget = 249.99 * fans + transport;
+
+                    if (budget >= finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget - finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget - budget:F2} leva.");
+                    }
+
+                }
+                else if (fans >= 5 && fans <= 9)
+                {
+                    double transport = budget * 0.60;
+                    double finalBudget = 249.99 * fans + transport;
+
+                    if (budget >= finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget - finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget - budget:F2} leva.");
+                    }
+                }
+                else if (fans >= 10 && fans <= 24)
+                {
+                    double transport = budget * 0.50;
+                    double finalBudget = 249.99 * fans + transport;
+
+                    if (budget >= finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget - finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget - budget:F2} leva.");
+                    }
+                }
+                else if (fans >= 25 && fans <= 49)
+                {
+                    double transport = budget * 0.40;
+                    double finalBudget = 249.99 * fans + transport;
+
+                    if (budget >= finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget - finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget - budget:F2} leva.");
+                    }
+                }
+                else
+                {
+                    double transport = budget * 0.25;
+                    double finalBudget = 249.99 * fans + transport;
+
+                    if (budget >= finalBudget)
+                    {
+                        Console.WriteLine($"Yes! You have {budget - finalBudget:F2} leva left.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Not enough money! You need {finalBudget - budget:F2} leva.");
+                    }
+                }
+            }
+        }
+    }
+}
