@@ -1,3 +1,3 @@
 # CSharpBasics
 
-My programs from C# Basics Course
+My programs from CSharp Basics Course
